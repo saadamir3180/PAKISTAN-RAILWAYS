@@ -1,0 +1,41 @@
+@mixin tablet-view {
+    @media screen and (max-width: 767px) {
+        html {
+            font-size: 90%;
+        }
+    }
+}
+@mixin mobile-view {
+    @media screen and (max-width: 425px) {
+        html {
+            font-size: 75%;
+        }
+    }
+}
+@mixin small-view {
+    @media screen and (max-width: 320px) {
+        html {
+            font-size: 70%;
+        }
+    }
+}
+
+// @mixin scrollBar {
+//     body::-webkit-scrollbar {
+//         -webkit-appearance: none;
+//     }
+//     body::-webkit-scrollbar:vertical {
+//         width: 11px;
+//     }
+//     body::-webkit-scrollbar:horizontal {
+//         height: 11px;
+//     }
+//     body::-webkit-scrollbar-thumb {
+//         border-radius: $borderRadius;
+//         border: $borderColor;
+//         background-color: $color-2;
+//     }
+//     body::-webkit-scrollbar-track {
+//         background-color: $black;
+//     }
+// }

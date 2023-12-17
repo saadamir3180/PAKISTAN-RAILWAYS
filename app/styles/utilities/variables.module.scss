@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,500&display=swap');
+@import './mixin.scss';
+
+// Colors
+$white: #FFFFFF;
+$black: #242734;
+$color-1: #4F5D75;
+$color-2: #DC965A;
+
+// Typography
+$font-family: 'Poppins', 'system-ui';
+$font-size: 1rem;
+$padding: 0.5rem 1rem;
+$borderRadius: 0.25rem;
+$border: 1px solid rgb(0, 36, 0);
+$borderColor: 1px solid $color-2;

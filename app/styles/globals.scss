@@ -1,0 +1,14 @@
+@import './utilities/variables.module.scss';
+@import './utilities/mixin.scss';
+@import './themes/darkTheme.scss';
+@import './themes/lightTheme.scss';
+@include mobile-view;
+@include tablet-view;
+@include small-view;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: $font-family;
+}
