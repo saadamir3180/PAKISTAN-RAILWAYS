@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import Nav from './(components)/Nav';
 import './styles/globals.scss';
+import Header from './(components)/Header/Header';
+import Footer from './(components)/Footer';
 
 export const metadata: Metadata = {
   title: 'Pakistan Railways',
@@ -14,9 +15,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <Nav/>
-        {children}</body>
+    <body>
+      <div className='bodyEnclosure'>
+        <Header />
+        <main>
+        {children}
+        </main>
+        <Footer />
+      </div>
+    </body>
     </html>
   )
 }

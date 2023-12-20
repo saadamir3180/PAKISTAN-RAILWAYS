@@ -1,3 +1,15 @@
+@mixin flexCenter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $padding-mini;
+}
+@mixin flexCenterCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $padding-mini;
+}
 @mixin tablet-view {
     @media screen and (max-width: 767px) {
         html {
@@ -13,29 +25,29 @@
     }
 }
 @mixin small-view {
-    @media screen and (max-width: 320px) {
+    @media screen and (max-width: 380px) {
         html {
             font-size: 70%;
         }
     }
 }
 
-// @mixin scrollBar {
-//     body::-webkit-scrollbar {
-//         -webkit-appearance: none;
-//     }
-//     body::-webkit-scrollbar:vertical {
-//         width: 11px;
-//     }
-//     body::-webkit-scrollbar:horizontal {
-//         height: 11px;
-//     }
-//     body::-webkit-scrollbar-thumb {
-//         border-radius: $borderRadius;
-//         border: $borderColor;
-//         background-color: $color-2;
-//     }
-//     body::-webkit-scrollbar-track {
-//         background-color: $black;
-//     }
-// }
+@mixin scrollBar {
+    body::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+    body::-webkit-scrollbar:vertical {
+        width: 7px;
+    }
+    body::-webkit-scrollbar:horizontal {
+        height: 7px;
+    }
+    body::-webkit-scrollbar-thumb {
+        border-radius: $borderRadius;
+        border: $border;
+        background-color: $color-1;
+    }
+    body::-webkit-scrollbar-track {
+        background-color: $black;
+    }
+}
