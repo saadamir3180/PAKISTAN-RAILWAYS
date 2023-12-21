@@ -18,7 +18,7 @@ interface TicketsResponse {
 
 const getTickets = async (): Promise<TicketsResponse> => {
   try {
-    const response = await fetch("http://localhost:3000/api/Tickets", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Tickets`, {
       cache: "no-cache",
     });
 
@@ -35,6 +35,10 @@ const getTickets = async (): Promise<TicketsResponse> => {
 };
 
 export default async function Dashboard() {
+
+  if(!process.env.NEXT_PUBLIC_API_URL){
+    return <div>API URL not found</div>;
+  }
   const { tickets } = await getTickets();
 
   const uniqueCategories: string[] = tickets?.reduce((acc: string[], { category }: { category: string }) => {

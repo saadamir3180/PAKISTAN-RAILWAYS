@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 const DeleteBlock = ({ id }: { id: string }) => {
   
   const deleteTicket = async () => {
-      const res = await fetch(`http://localhost:3000/api/Tickets/${id}`, {
+      const res = await fetch(`/api/Tickets/${id}`, {
           method: "DELETE",
       })
       if(res.ok){
