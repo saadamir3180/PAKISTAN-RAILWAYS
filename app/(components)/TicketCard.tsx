@@ -2,27 +2,44 @@ import React from "react";
 import DeleteBlock from "./DeleteBlock";
 import PriorityDisplay from "./PriorityDisplay";
 import ProgressBar from "./ProgressBar";
+import Link from "next/link";
 
-const TicketCard = () => {
+interface Ticket {
+  _id: string;
+  title: string;
+  description: string;
+  status: string;
+  category: string;
+  priority: number;
+  progress: number;
+  createdAt: string; 
+  updatedAt: string; 
+}
+
+
+const TicketCard = ({ticket}: { ticket : Ticket }) => {
   return (
+    // 
     <div className="ticketCard">
       <div className="head">
-        <DeleteBlock />
-        <PriorityDisplay />
+        <DeleteBlock id={ticket._id} />
+        <PriorityDisplay priority={ticket.priority}/>
       </div>
       <h3>
-        Title Card
+        {ticket.title}
       </h3>
       <hr />
       <p>
-          This is a ticket description
+          {ticket.description}
       </p>
       <p>
-          08.08.2021 10:01 PM
+          {ticket.createdAt}
       </p>
-      <ProgressBar />
-      <button className="done">Done</button>
+      <ProgressBar progress={ticket.progress}/>
+      <Link href={`/TicketPage/${ticket._id}`} className="linkTag done allowed">Update</Link>
+      <span className={`done ${ticket.status == 'completed' ? 'allowed' : ''}`}>{ticket.status}</span>
     </div>
+    // 
   );
 };
 

@@ -1,8 +1,17 @@
 "use client";
-
-import { useRouter } from 'next/router';
 import { useState, ChangeEvent } from "react";
 
+interface TicketNew {
+  _id: string;
+  title: string;
+  description: string;
+  status: string;
+  category: string;
+  priority: number;
+  progress: number;
+  createdAt: string;
+  updatedAt: string;
+}
 interface Ticket {
   title: string;
   description: string;
@@ -12,15 +21,25 @@ interface Ticket {
   progress: number;
 }
 
-const TicketForm = () => {
+const TicketForm = ({ ticketNew }: any) => {
+  const editPermission = ticketNew._id === "new" ? false : true;
+
   const TicketData: Ticket = {
-    title: '',
-    description: '',
+    title: "",
+    description: "",
     status: "Not started",
     category: "Hardware Issue",
     priority: 1,
     progress: 0,
   };
+  if (editPermission) {
+    TicketData["title"] = ticketNew.title;
+    TicketData["description"] = ticketNew.description;
+    TicketData["status"] = ticketNew.status;
+    TicketData["category"] = ticketNew.category;
+    TicketData["priority"] = ticketNew.priority;
+    TicketData["progress"] = ticketNew.progress;
+  }
 
   const [ticket, setTicket] = useState<Ticket>(TicketData);
 
@@ -33,9 +52,9 @@ const TicketForm = () => {
 
   const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const res = await fetch('/api/Tickets', {
-        method: "POST",
+    if (editPermission) {
+      const res = await fetch(`/api/Tickets/${ticketNew._id}`, {
+        method: "PUT",
         body: JSON.stringify({ ticket }),
         headers: {
           "Content-Type": "application/json",
@@ -44,8 +63,18 @@ const TicketForm = () => {
       if (!res.ok) {
         throw new Error(res.statusText);
       }
-    } catch (error) {
-      console.error("Error submitting ticket:", error);
+
+    } else {
+        const res = await fetch("/api/Tickets", {
+          method: "POST",
+          body: JSON.stringify({ ticket }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (!res.ok) {
+          throw new Error(res.statusText);
+        }
     }
   };
 
@@ -65,7 +94,7 @@ const TicketForm = () => {
 
           <div className="input-container">
             <input
-            type='text'
+              type="text"
               name="description"
               value={ticket.description}
               onChange={handleChange}
@@ -120,7 +149,7 @@ const TicketForm = () => {
         </div>
         <span className="buttonsContainer">
           <button type="submit" className="submitButton">
-            Submit
+            {editPermission ? "Update" : "Create"}
           </button>
         </span>
       </form>

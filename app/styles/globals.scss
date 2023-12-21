@@ -12,6 +12,10 @@
     margin: 0;
     font-family: $font-family;
 }
+.linkTag{
+    text-decoration: none;
+    color: unset;
+}
 //body
 .bodyEnclosure {
     margin-inline: auto;
@@ -49,7 +53,8 @@ header {
                     background-color: hsla(0, 0%, 85.3%, 0.8);
                 }
                 .icon {
-                    width: 2.3rem;
+                    width: 2rem;
+                    height: 2rem;
                     color: $white;
                     margin-block: auto;
                     @include flexCenter;
@@ -62,64 +67,77 @@ header {
         }
     }
 }
-//cardContainer
-.cardContainer {
-    @include flexCenter;
-    justify-content: start;
-    flex-wrap: wrap;
-}
-
-//ticketCard
-.ticketCard {
-    @include flexCenter;
-    flex-direction: column;
-    gap: 0.75rem;
-    min-width: 23rem;
-    background-color: $color-1;
-    backdrop-filter: blur(5px);
+//categoryContainer
+.categoryContainer{
     padding: $padding;
-    border-radius: $borderRadius;
-    margin: 0.5rem;
-    .head {
-        @include flexCenter;
-        flex-direction: row-reverse;
-        padding: $padding-mini;
-        width: 100%;
+    h2{
+        margin-block: 1rem;
     }
-    .icon {
-        width: 1.3rem;
-        cursor: pointer;
-    }
-    .deleteIcon,
-    .fireIcon {
-        color: $color-2;
-    }
-    .progressBar {
-        width: 102%;
-        height: 0.5rem;
-        border-radius: $borderRadius;
-        background-color: grey;
-        display: flex;
-        align-items: center;
-        .progress {
-            height: 55%;
-            // width: 45%;
-            //adjusted in the ProgressBar component
+    .cardContainer {
+        @include flexCenterCenter;
+        flex-wrap: wrap;
+        .ticketCard {
+            @include flexCenter;
+            flex-direction: column;
+            gap: 0.75rem;
+            min-width: 23rem;
+            background-color: $color-1;
+            backdrop-filter: blur(5px);
+            padding: $padding;
             border-radius: $borderRadius;
-            background-color: $color-2;
-            margin-inline: 1%;
+            margin: 0.5rem;
+            .head {
+                @include flexCenter;
+                flex-direction: row-reverse;
+                padding: $padding-mini;
+                width: 100%;
+            }
+            .icon {
+                width: 1.5rem;
+                height: 1.5rem;
+                cursor: pointer;
+                color: rgba(221, 221, 221, 0.359);
+                padding: 0;
+            }
+            .deleteIcon{
+                color: $color-2;
+            }
+            .fireIcon {
+                color: $color-2;
+            }
+            .progressBar {
+                width: 102%;
+                height: 0.5rem;
+                border-radius: $borderRadius;
+                background-color: grey;
+                display: flex;
+                align-items: center;
+                .progress {
+                    height: 55%;
+                    // width: 45%;
+                    //adjusted in the ProgressBar component
+                    border-radius: $borderRadius;
+                    background-color: $color-2;
+                    margin-inline: 1%;
+                }
+            }
+            hr {
+                width: 100%;
+            }
+            .done {
+                width: max-content;
+                background-color: grey;
+                border: $border;
+                padding: $padding-mini;
+                border-radius: $borderRadius;
+                margin-left: 85%;
+                cursor:not-allowed;
+            }
+            .allowed{
+                background-color: $black;
+                cursor: pointer
+            }
         }
-    }
-    hr {
-        width: 100%;
-    }
-    .done {
-        width: fit-content;
-        border: $border;
-        padding: $padding-mini;
-        border-radius: $borderRadius;
-        background-color: $black;
-        margin-left: 85%;
     }
 }
 //ticketForm, formContainer
