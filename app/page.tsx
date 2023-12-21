@@ -37,9 +37,13 @@ const getTickets = async (): Promise<TicketsResponse> => {
 export default async function Dashboard() {
   const { tickets } = await getTickets();
 
-  const uniqueCategories = [
-    ...new Set(tickets?.map(({ category }: { category: string }) => category)),
-  ];
+  const uniqueCategories: string[] = tickets?.reduce((acc: string[], { category }: { category: string }) => {
+    if (!acc.includes(category)) {
+      acc.push(category);
+    }
+    return acc;
+  }, []) || [];
+  
 
   return (
     <>
