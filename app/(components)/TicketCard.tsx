@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import DeleteBlock from "./DeleteBlock";
 import PriorityDisplay from "./PriorityDisplay";
@@ -36,7 +37,7 @@ const TicketCard = ({ticket}: { ticket : Ticket }) => {
           {ticket.createdAt}
       </p>
       <ProgressBar progress={ticket.progress}/>
-      <Link href={`${process.env.NEXT_PUBLIC_API_URL}/TicketPage/${ticket._id}`} className="linkTag done allowed">Update</Link>
+      <Link href={`/TicketPage/${ticket._id}`} className="linkTag done allowed">Update</Link>
       <span className={`done ${ticket.status == 'completed' ? 'allowed' : ''}`}>{ticket.status}</span>
     </div>
     // 
