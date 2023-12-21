@@ -16,7 +16,7 @@ interface PageParams {
   
 const getTicketById = async (id: string) => {
     try {
-      const response = await fetch(`/api/Tickets/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Tickets/${id}`, {
         cache: "no-cache",
       });
   
